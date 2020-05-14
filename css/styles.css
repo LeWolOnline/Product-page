@@ -1,0 +1,154 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+}
+
+/* Header */
+.headline {
+  padding: 20px 15% ;
+  margin: 0;
+  text-align: left;
+  color: white;
+  background-color: #7A95B3;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+/* Основной контент - вывод товаров */
+main {
+  font-size: 16px;
+  line-height: 26px;
+  padding: 10px 30px;
+
+}
+
+main ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.product_list{
+  max-width: 1400px;
+  min-width: 200px;
+  display: block;
+  text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+  .product_list {
+    padding-left: 15%; /*Место под меню?*/
+  }
+}
+
+.product {
+  display: inline-block;
+  border: 0px;
+  background-color: #e0e0e0;
+  color: black;
+  max-width: 250px;
+  width: 17%;
+  min-width: 230px;
+  text-align: left;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  border-radius: 3px;
+  margin: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .product {
+    transform: scale(0.9);
+    margin: 0px;
+  }
+  main {
+    padding-left: 5px;
+  }
+}
+
+.product:hover{
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.product a {
+  text-decoration: none;
+}
+
+.product img {
+  width: 100%;
+}
+
+.product-name {
+  color: #222222;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: auto;
+  white-space: nowrap; /* Отменяем перенос текста */
+  overflow: hidden; /* Обрезаем содержимое */
+  text-overflow: ellipsis;
+  font-size: 20px;
+}
+
+.product-brand, .product-id {
+  padding-left: 10px;
+  font-size: 13px;
+  color: gray;
+  font-style: italic;
+}
+
+.product-price {
+  padding-right: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  color: #ff8a00;
+  text-align: right;
+}
+
+.product-existence-true {
+  padding-left: 10px;
+  color: green;
+}
+
+.product-existence-false {
+  padding-left: 10px;
+  color: red;
+}
+
+/* Полоса номеров страниц */
+.pages {
+  padding: 20px;
+  text-align: center;
+}
+
+.cur-page, .num-page {
+  border: none;
+  color: white;
+  padding: 3px;
+  width: 25px;
+  height: 25px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10%;
+}
+.cur-page {
+  background-color: gray;
+}
+
+.num-page {
+  background-color: #7A95B3;
+}
+
+.num-page:hover {
+  background-color: #445F7D;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+footer {
+  color: #e0e0e0;
+  padding: 10px 10%;
+  font-size: 13px;
+  font-style: italic;
+  background-color: gray;
+}

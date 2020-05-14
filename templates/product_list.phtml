@@ -1,0 +1,64 @@
+  <main>
+    <div class="product_list">
+      <?php  foreach ($pdo->query($sql) as $row): ?>
+        <!-- Проверяем наличие изображений: -->
+        <?php $image_src = ""; //Обычное изображение
+          if (file_exists($path."/images/middle_".$row['image'])){
+            $image_src = "../images/middle_" . $row['image'];
+          } elseif (file_exists($path."/images/large_".$row['image'])) {
+            $image_src = "../images/large_" . $row['image'];
+          } else {
+            $image_src = "../images/no-photo.png";
+          } ?>
+        <?php $image_src_big = ""; //Крупное изображение
+          if (file_exists($path."/images/large_".$row['image'])) {
+            $image_src_big = "../images/large_" . $row['image'];
+          } else {
+            $image_src_big = false;
+          } ?>
+        <!-- Выводим карточку товара -->
+          <ul class="product">
+            <?php if ($image_src_big): ?>
+            <a data-fancybox="images" href="<?=$image_src_big?>">
+            <?php endif; ?>
+              <!-- Выводим изображение -->
+              <li class="product-img"><img src=<?=$image_src?> height=230px></li>
+              <!-- Выводим имя и бренд продукта -->
+              <li class="product-name" title="<?= $row['name'] ?>"><?= $row['name'] ?></li>
+              <li class="product-brand" title="Изготовитель"><?= $row['brand_name'] ?></li>
+              <!-- <li class="product-id">id: <?= $row['id'] ?></li> -->
+              <!-- Выводим наличие продукта -->
+              <?php
+              if ($row['existence'] == 1) {
+                $existence="В наличии";
+              } else {
+                $existence="Отсутствует";
+              } ?>
+              <li class="
+              <?php if ($row['existence'] == 1): ?>
+                product-existence-true
+              <?php else: ?>
+                product-existence-false
+              <?php endif; ?>
+              "><?= $existence ?></li>
+              <!-- Выводим цену продукта -->
+              <li class="product-price"><?= $row['price'] ?>₽</li>
+            <?php if ($image_src_big): ?>
+            </a>
+            <?php endif; ?>
+          </ul>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Выводим номера страниц -->
+    <div class="pages">
+      <?php $page = 0; ?>
+      <?php while ($page++ < $num_pages): ?>
+        <?php if ($page == $cur_page): ?>
+          <b class="cur-page"><?=$page?></b>
+        <?php else: ?>
+          <a class="num-page" href="?page=<?=$page?>"><?=$page?></a>
+        <?php endif ?>
+      <?php endwhile ?>
+    </div>
+  </main>
